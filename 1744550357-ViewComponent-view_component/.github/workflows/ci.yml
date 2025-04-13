@@ -1,0 +1,148 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_GEMFILE: gemfiles/rails_8.0.gemfile
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4
+        bundler-cache: true
+    - name: Run benchmarks
+      run: |
+        bundle exec appraisal rails-8.0 rake partial_benchmark
+        bundle exec appraisal rails-8.0 rake translatable_benchmark
+  test:
+    name: test (${{ matrix.rails_version }}, ${{ matrix.ruby_version }}, ${{ matrix.mode }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ruby_version: "3.0"
+            rails_version: "6.1"
+            mode: "capture_patch_enabled"
+          - ruby_version: "3.0"
+            rails_version: "6.1"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.1"
+            rails_version: "7.0"
+            mode: "capture_patch_enabled"
+          - ruby_version: "3.1"
+            rails_version: "7.0"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.2"
+            rails_version: "7.1"
+            mode: "capture_patch_enabled"
+          - ruby_version: "3.2"
+            rails_version: "7.1"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.3"
+            rails_version: "7.2"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.3"
+            rails_version: "7.2"
+            mode: "capture_patch_enabled"
+          - ruby_version: "3.3"
+            rails_version: "8.0"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.3"
+            rails_version: "8.0"
+            mode: "capture_patch_enabled"
+          - ruby_version: "3.4"
+            rails_version: "8.0"
+            mode: "capture_patch_disabled"
+          - ruby_version: "3.4"
+            rails_version: "8.0"
+            mode: "capture_patch_enabled"
+          - ruby_version: "head"
+            rails_version: "main"
+            mode: "capture_patch_disabled"
+          - ruby_version: "head"
+            rails_version: "main"
+            mode: "capture_patch_enabled"
+    env:
+      BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails_version }}.gemfile
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+    - name: Build and test with Rake
+      # Code-reloading isn't compatible with simplecov, so we need to run once
+      # to collect coverage, and again to test reloads.
+      run: |
+        bundle exec appraisal rails-${{ matrix.rails_version }} bundle
+        MEASURE_COVERAGE=true bundle exec appraisal rails-${{ matrix.rails_version }} rake
+        ENABLE_RELOADING=true bundle exec appraisal rails-${{ matrix.rails_version }} rake
+      env:
+        RAISE_ON_WARNING: 1
+        RAILS_VERSION: ${{ matrix.rails_version }}
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        CAPTURE_PATCH_ENABLED: ${{ matrix.mode == 'capture_patch_enabled' && 'true' || 'false' }}
+    - name: Upload coverage results
+      uses: actions/upload-artifact@v4.4.0
+      if: always()
+      with:
+        name: simplecov-resultset-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}-${{matrix.mode}}
+        path: coverage
+        include-hidden-files: true
+  primer_view_components_compatibility:
+    name: Test compatibility with Primer ViewComponents (main)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.1.1
+      with:
+        repository: 'primer/view_components'
+        path: 'primer_view_components'
+    - uses: actions/checkout@v4.1.1
+      with:
+        path: 'view_component'
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4
+        bundler-cache: true
+        working-directory: 'view_component'
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+        cache-dependency-path: 'primer_view_components/package-lock.json'
+    - name: Build and test with Rake
+      run: |
+        cd primer_view_components
+        npm ci
+        cd demo && npm ci && cd ..
+        bundle && bundle exec rake
+      env:
+        VIEW_COMPONENT_PATH: ../view_component
+        RAILS_VERSION: '7.1.1'
+        PARALLEL_WORKERS: '1'
+  coverage:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4
+        bundler-cache: true
+    - name: Download coverage results
+      uses: actions/download-artifact@v4.2.1
+    - name: Collate simplecov
+      run: |
+        bundle exec rake coverage:report
