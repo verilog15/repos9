@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "johnnymorganz.stylua",
+        "tomblind.local-lua-debugger-vscode",
+        "sumneko.lua",
+        "rog2.luacheck"
+    ]
+}

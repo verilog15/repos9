@@ -1,0 +1,99 @@
+name: Release DCS-BIOS nightly build
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Release at 22.00, Github does not guarantee exact time
+    - cron:  '0 22 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    name: Run unit tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up lua
+        uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: "5.1.5"
+
+      - name: compile
+        run: |
+          lua ./Scripts/DCS-BIOS/test/compile/LocalCompile.lua
+
+      - name: test
+        run: |
+          lua ./Scripts/DCS-BIOS/test/TestSuite.lua
+
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    name: Release zip file
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
+
+      - name: Set release filename
+        id: filename
+        run: echo "zip=DCS-BIOS_nightly_${{ steps.date.outputs.date }}.zip" >> $GITHUB_OUTPUT
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up lua
+        uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: "5.1.5"
+
+        # recompile, so the generated files are always up-to-date
+      - name: compile
+        run: |
+          lua ./Scripts/DCS-BIOS/test/compile/LocalCompile.lua
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.6
+        with:
+          type: zip
+          filename: '${{ steps.filename.outputs.zip }}'
+          directory: './Scripts'
+          exclusions: '/*test/*'
+
+      - name: Archive Programs
+        uses: thedoctor0/zip-release@0.7.6
+        with:
+          type: zip
+          filename: 'Arduino_Tools.zip'
+          directory: './Programs'
+
+      - name: Update latest tag
+        uses: rickstaa/action-create-tag@v1
+        id: tag_create
+        with:
+          tag: latest
+          force_push_tag: true
+          message: Nightly build of main branch
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: './Scripts/${{ steps.filename.outputs.zip }},./Programs/Arduino_Tools.zip'
+          commit: main
+          makeLatest: true
+          name: 'DCS-BIOS Nightly ${{ steps.date.outputs.date }}'
+          prerelease: true
+          removeArtifacts: true
+          tag: latest
+          updateOnlyUnreleased: true

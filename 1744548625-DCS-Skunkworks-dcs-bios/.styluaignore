@@ -1,0 +1,4 @@
+# opt-out external library code
+/Scripts/DCS-BIOS/lib/ext
+# opt-out copy-pasted test library code
+/Scripts/DCS-BIOS/test/ext
