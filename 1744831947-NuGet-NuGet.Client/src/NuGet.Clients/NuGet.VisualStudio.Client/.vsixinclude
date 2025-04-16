@@ -1,0 +1,41 @@
+# NuGet delay signed assemblies
+NuGet.Console.dll
+NuGet.Credentials.dll
+NuGet.PackageManagement.PowerShellCmdlets.dll
+NuGet.PackageManagement.VisualStudio.dll
+NuGet.SolutionRestoreManager.dll
+NuGet.Tools.dll
+NuGet.VisualStudio.Common.dll
+NuGet.VisualStudio.Contracts.dll
+NuGet.VisualStudio.Implementation.dll
+NuGet.VisualStudio.Internal.Contracts.dll
+NuGet.VisualStudio.Interop.dll
+NuGet.VisualStudio.OnlineEnvironment.Client.dll
+NuGet.VisualStudio.dll
+
+# MS delay signed assemblies
+Microsoft.Build.NuGetSdkResolver.dll
+NuGet.Build.Tasks.dll
+NuGet.Commands.dll
+NuGet.Common.dll
+NuGet.Configuration.dll
+NuGet.DependencyResolver.Core.dll
+NuGet.Frameworks.dll
+NuGet.Indexing.dll
+NuGet.LibraryModel.dll
+NuGet.PackageManagement.UI.dll
+NuGet.PackageManagement.dll
+NuGet.Packaging.dll
+NuGet.ProjectModel.dll
+NuGet.Protocol.dll
+NuGet.Resolver.dll
+NuGet.Versioning.dll
+
+# 3rd party dlls to keep
+Microsoft.Extensions.FileProviders.Abstractions.dll
+Microsoft.Extensions.FileSystemGlobbing.dll
+Microsoft.Extensions.Primitives.dll
+Microsoft.Web.XmlTransform.dll
+
+# Assembly XML Documentation we ship in the VSIX
+NuGet.PackageManagement.PowerShellCmdlets.dll-Help.xml

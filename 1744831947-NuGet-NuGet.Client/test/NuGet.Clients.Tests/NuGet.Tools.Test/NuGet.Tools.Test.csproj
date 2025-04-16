@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(NETFXTargetFramework)</TargetFramework>
+    <Description>Unit tests for NuGet.Tools.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\NuGet.Clients\NuGet.Tools\NuGet.Tools.csproj" />
+    <ProjectReference Include="..\..\TestUtilities\Test.Utility\Test.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Sdk.TestFramework.Xunit" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(NETCoreTargetFramework)</TargetFramework>
+    <Description>Integration tests for NuGet-powered dotnet CLI commands such as pack/restore/list package and dotnet nuget.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="compiler\resources\*" />
+    <EmbeddedResource Include="compiler\resources\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NuGet.XPlat.FuncTest\NuGet.XPlat.FuncTest.csproj" />
+    <ProjectReference Include="..\..\TestUtilities\Test.Utility\Test.Utility.csproj" />
+    <ProjectReference Include="..\..\..\src\NuGet.Core\NuGet.Build.Tasks.Pack\NuGet.Build.Tasks.Pack.csproj" />
+    <ProjectReference Include="..\..\..\src\NuGet.Core\NuGet.Build.Tasks.Console\NuGet.Build.Tasks.Console.csproj" />
+    <ProjectReference Include="..\..\..\src\NuGet.Core\Microsoft.Build.NuGetSdkResolver\Microsoft.Build.NuGetSdkResolver.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- tests disabled temporarily to enable System.CommandLine update flow -->
+    <Compile Remove="DotnetAddPackageTests.cs" />
+    <Compile Remove="DotnetPackageSearchTests.cs" />
+    <Compile Remove="DotnetRestoreTests.cs" />
+    <Compile Remove="DotnetSignTests.cs" />
+    <Compile Remove="DotnetSourcesTests.cs" />
+    <Compile Remove="DotnetTrustTests.cs" />
+    <Compile Remove="DotnetVerifyTests.cs" />
+    <Compile Remove="DotnetWhyTests.cs" />
+    <Compile Remove="DotnetListPackageTests.cs" />
+    <Compile Remove="DotnetRestoreTLSCertificateValidationTests.cs" />
+    <Compile Remove="DotnetToolTests.cs" />
+    <Compile Remove="PackCommandTests.cs" />
+  </ItemGroup>
+</Project>
