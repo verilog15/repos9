@@ -1,0 +1,34 @@
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Enable manual runs of the bot
+
+jobs:
+  unassign_issues:
+    runs-on: ubuntu-latest
+    name: Unassign issues
+    steps:
+      - name: Unassign issues
+        uses: rubyforgood/unassign-issues@v1.3
+        id: unassign_issues
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          unassign_inactive_in_hours: 360  # 15 days
+          warning_inactive_in_hours: 240  # 10 days
+          office_hours: 'Tuesdays 6-8 PM PST'
+          warning_inactive_message: 'If you are still working on this, comment here to tell the bot to give you more time'
+      - name: Print the unassigned issues
+        run: echo "Unassigned issues = ${{steps.unassign_issues.outputs.unassigned_issues}}"
+      - name: Print the warned issues
+        run: echo "Warned issues = ${{steps.unassign_issues.outputs.warned_issues}}"
+      - name: Move unassigned issues from In Progress to To Do
+        uses: bjthompson805/move-issues@v1
+        id: move_issues
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          issues: ${{steps.unassign_issues.outputs.unassigned_issues}}
+          from_column: '8461148'
+          to_column: '15690587'
+      - name: Print moved issues
+        run: echo "Moved issues = ${{steps.move_issues.outputs.moved_issues}}"

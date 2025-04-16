@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    command: bin/dev
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - bundle_data:/usr/local/bundle/gems
+    env_file:
+      - config/docker.env
+    depends_on:
+      - database
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    tty: true
+    platform: linux/x86_64
+
+  database:
+    image: postgres:12.5
+    env_file:
+      - config/docker.env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+    ports:
+      - "5900:5900"
+    volumes:
+      - ./tmp/downloads:/home/seluser/Downloads
+
+volumes:
+  db_data:
+  bundle_data:
+  node_modules:

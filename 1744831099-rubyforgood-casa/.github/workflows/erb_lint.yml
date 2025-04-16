@@ -1,0 +1,31 @@
+name: ERB lint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.erb'
+      - '**/*.html'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.erb'
+      - '**/*.html'
+
+jobs:
+  erb_lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: ERB lint
+        run: bundle exec erblint --lint-all

@@ -1,0 +1,29 @@
+name: spec checker
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'doc/**'
+      - '**/*.md'
+      - 'bin/**'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - 'doc/**'
+      - '**/*.md'
+      - 'bin/**'
+
+jobs:
+  spec_checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: rake test_checker
+        run: bundle exec rake test_checker

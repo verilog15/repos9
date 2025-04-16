@@ -1,0 +1,7 @@
+#!/bin/bash
+set +e
+
+echo 'Starting web server...'
+echo 'View this app in your web browser at'
+echo 'http://localhost:3000/'
+docker compose up -d

@@ -1,0 +1,34 @@
+#!/bin/sh
+# Installs dependencies if any are missing
+# Usage:
+#   update-dependencies
+#     no arguments
+
+repo_root="$(git rev-parse --show-toplevel)"
+. "$repo_root/bin/git_hooks/logger"
+
+log info "Checking rails dependency status"
+
+if ! [ -x "$(command -v bundle)" ]; then
+  log error "Command bundle could not be found"
+  exit 1
+fi
+
+if ! [ -x "$(command -v npm)" ]; then
+  log error "Command npm could not be found"
+  exit 1
+fi
+
+if ! bundle check; then
+  log info "Updating rails dependencies"
+  bundle install
+else
+  log success "Dependencies up to date"
+fi
+
+log info "Checking javascript dependency status"
+
+if [ $(git diff HEAD@{1}..HEAD@{0} -- "package-lock.json" | wc -l) -gt 0 ] || [ $(git diff HEAD@{1}..HEAD@{0} -- "package.json" | wc -l) -gt 0 ]; then
+  log info "Updating JavaScript dependencies"
+  npm install
+fi

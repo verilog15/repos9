@@ -1,0 +1,93 @@
+name: rspec
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "doc/**"
+      - "**/*.md"
+  pull_request:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RAILS_ENV: test
+      TEST_MAX_DURATION: 60
+
+    services:
+      db:
+        image: postgres:14.8
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up JS
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: "npm"
+      - run: npm ci
+
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+
+      - name: Build App
+        env:
+          POSTGRES_HOST: localhost
+          DATABASE_HOST: localhost
+          POSTGRES_USER: postgres
+          CASA_DATABASE_PASSWORD: password
+          POSTGRES_PASSWORD: password
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PORT: 5432
+        run: |
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
+          bundle exec rails assets:precompile
+
+      - name: Run rspec and upload code coverage
+        env:
+          DATABASE_HOST: localhost
+          POSTGRES_USER: postgres
+          CASA_DATABASE_PASSWORD: password
+          POSTGRES_HOST_AUTH_METHOD: trust
+          RUN_SIMPLECOV: true
+          CC_TEST_REPORTER_ID: 31464536e34ab26588cb951d0fa6b5898abdf401dbe912fd47274df298e432ac
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+          RUBYOPT='-W:no-deprecated -W:no-experimental' bundle exec rspec
+          ./cc-test-reporter after-build --exit-code $?
+
+      - name: Archive selenium screenshots
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-screenshots
+          path: |
+            ${{ github.workspace }}/tmp/capybara/*.png
+            ${{ github.workspace }}/tmp/capybara/*.html
