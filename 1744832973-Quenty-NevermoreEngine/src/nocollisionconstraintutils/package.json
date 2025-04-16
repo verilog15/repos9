@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/nocollisionconstraintutils",
+  "version": "10.8.4",
+  "description": "Utility functions to create and manipulate NoCollisionConstraints between Roblox objects",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Physics"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/nocollisionconstraintutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/getmechanismparts": "file:../getmechanismparts",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

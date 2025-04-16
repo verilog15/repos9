@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/rotatinglabel",
+  "version": "11.8.4",
+  "description": "A text label with most general properties of a textlabel, except when text is set, it rotates uniformly like an old clock, animating in a satisfying way",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "RotatingLabel"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/rotatinglabel/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/math": "file:../math",
+    "@quenty/spring": "file:../spring"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@quenty/baseobject",
+  "version": "10.8.3",
+  "description": "BaseObject implementation with Maid attached for Roblox",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/baseobject/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

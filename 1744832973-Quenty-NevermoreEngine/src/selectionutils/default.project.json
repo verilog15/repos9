@@ -1,0 +1,7 @@
+{
+  "name": "selectionutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@quenty/terrainutils",
+  "version": "10.9.4",
+  "description": "Utility functions for manipulating terrain",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Terrain"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/terrainutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/region3int16utils": "file:../region3int16utils",
+    "@quenty/region3utils": "file:../region3utils",
+    "@quenty/vector3int16utils": "file:../vector3int16utils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

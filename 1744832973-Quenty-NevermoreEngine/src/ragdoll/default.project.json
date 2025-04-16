@@ -1,0 +1,7 @@
+{
+  "name": "ragdoll",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

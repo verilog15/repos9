@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/humanoidteleportutils",
+  "version": "10.8.3",
+  "description": "Utility for teleporting humanoids",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Character"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/humanoidteleportutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/raycaster": "file:../raycaster"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

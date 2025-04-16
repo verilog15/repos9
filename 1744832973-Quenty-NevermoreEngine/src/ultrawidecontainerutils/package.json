@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/ultrawidecontainerutils",
+  "version": "2.4.2",
+  "description": "Creates a 1920x1080 scaling container to handle ultrawide monitors and screens in a reasonable way. This helps keep UI centered and available for ultrawide screens.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Gui"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/ultrawidecontainerutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

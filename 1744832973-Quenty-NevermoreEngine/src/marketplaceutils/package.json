@@ -1,0 +1,36 @@
+{
+  "name": "@quenty/marketplaceutils",
+  "version": "11.11.4",
+  "description": "Provides utility methods for MarketplaceService",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "MarketplaceService",
+    "Promises"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/marketplaceutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/memoize": "file:../memoize",
+    "@quenty/promise": "file:../promise"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/cframeserializer",
+  "version": "4.7.4",
+  "description": "Optimized these functions for speed as well as preserving fidality. In the future, use Roblox's orthogonal angle format.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "CFrame"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/cframeserializer/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/math": "file:../math"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/textfilterutils",
+  "version": "10.10.4",
+  "description": "Utility functions for filtering text",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "TextService"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/textfilterutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/promise": "file:../promise",
+    "@quenty/typeutils": "file:../typeutils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

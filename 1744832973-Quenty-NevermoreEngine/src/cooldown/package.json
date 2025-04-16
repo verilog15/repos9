@@ -1,0 +1,49 @@
+{
+  "name": "@quenty/cooldown",
+  "version": "11.20.3",
+  "description": "Generalized networked cooldown system for Roblox",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Cooldown"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/cooldown/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/attributeutils": "file:../attributeutils",
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/binder": "file:../binder",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/instanceutils": "file:../instanceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/promise": "file:../promise",
+    "@quenty/propertyvalue": "file:../propertyvalue",
+    "@quenty/remoting": "file:../remoting",
+    "@quenty/rx": "file:../rx",
+    "@quenty/rxbinderutils": "file:../rxbinderutils",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/signal": "file:../signal",
+    "@quenty/table": "file:../table",
+    "@quenty/timesyncservice": "file:../timesyncservice",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

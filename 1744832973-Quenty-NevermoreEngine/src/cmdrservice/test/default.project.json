@@ -1,0 +1,21 @@
+{
+  "name": "CmdrServiceTest",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "cmdrservice": {
+        "$path": ".."
+      },
+      "Script": {
+        "$path": "scripts/Server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Main": {
+          "$path": "scripts/Client"
+        }
+      }
+    }
+  }
+}

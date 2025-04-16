@@ -1,0 +1,49 @@
+{
+  "name": "@quenty/highlight",
+  "version": "10.21.3",
+  "description": "Animated highlight system for the Roblox highlight object",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Highlight",
+    "Blend"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/highlight/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/basicpane": "file:../basicpane",
+    "@quenty/blend": "file:../blend",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/enumutils": "file:../enumutils",
+    "@quenty/instanceutils": "file:../instanceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/math": "file:../math",
+    "@quenty/observablecollection": "file:../observablecollection",
+    "@quenty/rx": "file:../rx",
+    "@quenty/selectionutils": "file:../selectionutils",
+    "@quenty/signal": "file:../signal",
+    "@quenty/statestack": "file:../statestack",
+    "@quenty/table": "file:../table",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

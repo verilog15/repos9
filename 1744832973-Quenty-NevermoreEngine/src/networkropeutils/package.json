@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/networkropeutils",
+  "version": "10.8.3",
+  "description": "Utility function to create network ropes which hint to Roblox that two assemblies should be considered to be owned by the same network owner.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Physics"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/networkropeutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

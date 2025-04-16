@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/signal",
+  "version": "7.10.3",
+  "description": "A simple signal implementation for Roblox",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "event",
+    "signal",
+    "connection"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/signal/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@quenty/loader": "file:../loader"
+  }
+}

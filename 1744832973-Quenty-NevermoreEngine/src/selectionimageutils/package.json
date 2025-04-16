@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/selectionimageutils",
+  "version": "11.8.3",
+  "description": "Provides a utility method to clearing selection images with blank values.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Gui",
+    "Buttons"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/selectionimageutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

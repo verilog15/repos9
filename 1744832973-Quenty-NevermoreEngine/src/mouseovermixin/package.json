@@ -1,0 +1,36 @@
+{
+  "name": "@quenty/mouseovermixin",
+  "version": "10.8.3",
+  "description": "Mouse over mixin for general utility button mouse over effects",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "ClassMixin",
+    "GuiMixins"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/mouseovermixin/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/buttonutils": "file:../buttonutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/guitriangle",
+  "version": "2.2.2",
+  "description": "2D Gui triangle rendering class",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Triangles"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/guitriangle/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

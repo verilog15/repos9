@@ -1,0 +1,7 @@
+{
+  "name": "symbol",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

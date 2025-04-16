@@ -1,0 +1,11 @@
+{
+  "name": "rigbuildertest",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "rigbuilder": {
+        "$path": ".."
+      }
+    }
+  }
+}

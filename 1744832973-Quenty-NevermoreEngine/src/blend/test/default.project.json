@@ -1,0 +1,21 @@
+{
+  "name": "BlendTest",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "blend": {
+        "$path": ".."
+      },
+      "Script": {
+        "$path": "scripts/Server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Main": {
+          "$path": "scripts/Client"
+        }
+      }
+    }
+  }
+}

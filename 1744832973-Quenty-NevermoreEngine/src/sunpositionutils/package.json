@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/sunpositionutils",
+  "version": "2.3.2",
+  "description": "Utility to position the sun and to retrieve sun information specific to Roblox.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Lighting"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/sunpositionutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

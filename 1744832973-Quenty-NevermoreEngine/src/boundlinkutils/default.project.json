@@ -1,0 +1,7 @@
+{
+  "name": "boundlinkutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

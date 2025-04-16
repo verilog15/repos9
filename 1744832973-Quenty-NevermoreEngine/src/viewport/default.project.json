@@ -1,0 +1,7 @@
+{
+  "name": "viewport",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

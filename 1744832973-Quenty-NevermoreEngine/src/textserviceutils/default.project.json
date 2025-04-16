@@ -1,0 +1,7 @@
+{
+  "name": "textserviceutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

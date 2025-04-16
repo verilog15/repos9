@@ -1,0 +1,37 @@
+{
+  "name": "@quenty/camerastoryutils",
+  "version": "10.10.4",
+  "description": "CameraStoryUtils - utility functions for 3D viewport hoarcekat stories.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "hoarcekat",
+    "stories"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/camerastoryutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/insertserviceutils": "file:../insertserviceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/math": "file:../math",
+    "@quenty/promise": "file:../promise"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

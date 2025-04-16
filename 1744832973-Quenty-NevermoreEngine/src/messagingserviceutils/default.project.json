@@ -1,0 +1,7 @@
+{
+  "name": "messagingserviceutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

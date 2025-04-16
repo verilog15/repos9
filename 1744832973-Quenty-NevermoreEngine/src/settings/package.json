@@ -1,0 +1,61 @@
+{
+  "name": "@quenty/settings",
+  "version": "11.23.3",
+  "description": "Centralized player settings service",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Settings"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/settings/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/attributeutils": "file:../attributeutils",
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/binder": "file:../binder",
+    "@quenty/brio": "file:../brio",
+    "@quenty/cmdrservice": "file:../cmdrservice",
+    "@quenty/datastore": "file:../datastore",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/enumutils": "file:../enumutils",
+    "@quenty/instanceutils": "file:../instanceutils",
+    "@quenty/jsonutils": "file:../jsonutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/observablecollection": "file:../observablecollection",
+    "@quenty/playerbinder": "file:../playerbinder",
+    "@quenty/playerutils": "file:../playerutils",
+    "@quenty/remotefunctionutils": "file:../remotefunctionutils",
+    "@quenty/remoting": "file:../remoting",
+    "@quenty/rx": "file:../rx",
+    "@quenty/rxbinderutils": "file:../rxbinderutils",
+    "@quenty/rxsignal": "file:../rxsignal",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/signal": "file:../signal",
+    "@quenty/statestack": "file:../statestack",
+    "@quenty/string": "file:../string",
+    "@quenty/symbol": "file:../symbol",
+    "@quenty/table": "file:../table",
+    "@quenty/throttle": "file:../throttle",
+    "@quenty/tie": "file:../tie",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@quenty/raycaster",
+  "version": "3.4.2",
+  "description": "Repeats raycasting attempts while ignoring items via a filter function",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Utility"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/raycaster/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty",
+    "AxisAngle"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@quenty/genericscreenguiprovider",
+  "version": "13.20.3",
+  "description": "Providers screenGuis with a given display order for easy use",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/genericscreenguiprovider/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/blend": "file:../blend",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/rx": "file:../rx",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/string": "file:../string",
+    "@quenty/uiobjectutils": "file:../uiobjectutils",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

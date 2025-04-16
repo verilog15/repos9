@@ -1,0 +1,56 @@
+{
+  "name": "@quenty/snackbar",
+  "version": "11.21.3",
+  "description": "Snackbars provide lightweight feedback on an operation at the base of the screen. They automatically disappear after a timeout or user interaction. There can only be one on the screen at a time.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Snackbar"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/snackbar/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/basicpane": "file:../basicpane",
+    "@quenty/blend": "file:../blend",
+    "@quenty/buttondragmodel": "file:../buttondragmodel",
+    "@quenty/buttonhighlightmodel": "file:../buttonhighlightmodel",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/genericscreenguiprovider": "file:../genericscreenguiprovider",
+    "@quenty/inputobjectutils": "file:../inputobjectutils",
+    "@quenty/lipsum": "file:../lipsum",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/math": "file:../math",
+    "@quenty/promise": "file:../promise",
+    "@quenty/promisemaid": "file:../promisemaid",
+    "@quenty/promptqueue": "file:../promptqueue",
+    "@quenty/qgui": "file:../qgui",
+    "@quenty/rx": "file:../rx",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/table": "file:../table",
+    "@quenty/textserviceutils": "file:../textserviceutils",
+    "@quenty/transitionmodel": "file:../transitionmodel",
+    "@quenty/utf8": "file:../utf8",
+    "@quenty/valueobject": "file:../valueobject",
+    "@quentystudios/t": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

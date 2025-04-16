@@ -1,0 +1,7 @@
+{
+  "name": "clienttranslator",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

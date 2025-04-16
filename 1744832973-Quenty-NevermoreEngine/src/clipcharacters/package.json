@@ -1,0 +1,43 @@
+{
+  "name": "@quenty/clipcharacters",
+  "version": "12.19.3",
+  "description": "Clip characters locally on the client of other clients so they don't interfer with physics.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Character"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/clipcharacters/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/brio": "file:../brio",
+    "@quenty/characterutils": "file:../characterutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/playerutils": "file:../playerutils",
+    "@quenty/remoting": "file:../remoting",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/statestack": "file:../statestack",
+    "@quenty/table": "file:../table",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

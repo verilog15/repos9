@@ -1,0 +1,35 @@
+title = "Nevermore"
+gitRepoUrl = "https://github.com/Quenty/NevermoreEngine"
+gitSourceBranch = "main"
+projectName = "Nevermore"
+url = "https://quenty.github.io"
+tagline = "Quenty's reusable code for Roblox"
+autoSectionPath = "src"
+
+[[navbar.items]]
+href = "https://discord.gg/mhtGUS8"
+label = "Discord"
+position = "right"
+
+[footer]
+copyright = "Copyright © 2014-2025 James Onnen. Made with Moonwave."
+
+[docusaurus]
+url = "https://quenty.github.io"
+onBrokenLinks = "warn"
+
+[home]
+enabled = true
+includeReadme = true
+
+[[home.features]]
+title = "Faster development"
+description = "Speed up Roblox development With Nevermore. With built in IK, Ragdoll, camera systems, and more, development has never been faster."
+
+[[home.features]]
+title = "Composable"
+description = "Libraries are modular! Modules are designed to compose both with Roblox and each other."
+
+[[home.features]]
+title = "Battle tested"
+description = "These libraries are old, and have been used in production for millions of game sessions"

@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/rbxthumb",
+  "version": "5.9.4",
+  "description": "Wraps the rbxthumb URL api surface.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Thumbnail",
+    "rbxthumb"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/rbxthumb/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/table": "file:../table"
+  }
+}

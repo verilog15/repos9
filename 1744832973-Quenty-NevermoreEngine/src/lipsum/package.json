@@ -1,0 +1,42 @@
+{
+  "name": "@quenty/lipsum",
+  "version": "14.18.3",
+  "description": "A Lorem Ipsum generator in Roblox",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "lorem",
+    "ipsum",
+    "text"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/lipsum/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/randomutils": "file:../randomutils",
+    "@quenty/string": "file:../string"
+  },
+  "devDependencies": {
+    "@quenty/maid": "file:../maid",
+    "@quenty/textserviceutils": "file:../textserviceutils",
+    "@quenty/uiobjectutils": "file:../uiobjectutils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

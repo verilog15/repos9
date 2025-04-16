@@ -1,0 +1,40 @@
+{
+  "name": "@quenty/sprites",
+  "version": "13.16.3",
+  "description": "Spritesheet utility for Roblox including a built-in InputImageLibrary",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "sprites",
+    "input-images"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/sprites/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/uiobjectutils": "file:../uiobjectutils"
+  },
+  "devDependencies": {
+    "@quenty/string": "file:../string"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

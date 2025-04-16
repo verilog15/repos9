@@ -1,0 +1,21 @@
+{
+  "name": "IKTest",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "ik": {
+        "$path": ".."
+      },
+      "Script": {
+        "$path": "scripts/Server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Main": {
+          "$path": "scripts/Client"
+        }
+      }
+    }
+  }
+}

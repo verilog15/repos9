@@ -1,0 +1,7 @@
+{
+  "name": "datastore",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

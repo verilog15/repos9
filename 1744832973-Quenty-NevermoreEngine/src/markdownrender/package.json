@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/markdownrender",
+  "version": "2.3.2",
+  "description": "Renders and parses markdown on Roblox.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Markdown"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/markdownrender/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

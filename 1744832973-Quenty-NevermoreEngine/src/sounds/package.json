@@ -1,0 +1,38 @@
+{
+  "name": "@quenty/sounds",
+  "version": "10.10.4",
+  "description": "Utility functions involving sounds and their state",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Sounds",
+    "Promises"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/sounds/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/promise": "file:../promise",
+    "@quenty/promisemaid": "file:../promisemaid",
+    "@quenty/rbxasset": "file:../rbxasset"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

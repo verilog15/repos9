@@ -1,0 +1,36 @@
+{
+  "name": "@quenty/getgroundplane",
+  "version": "10.8.3",
+  "description": "Function that uses raycasting to determine the groundplane in Roblox",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Raycasting"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/getgroundplane/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader"
+  },
+  "devDependencies": {
+    "@quenty/loader": "file:../loader"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

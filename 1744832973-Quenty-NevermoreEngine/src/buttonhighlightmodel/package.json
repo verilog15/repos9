@@ -1,0 +1,43 @@
+{
+  "name": "@quenty/buttonhighlightmodel",
+  "version": "14.18.3",
+  "description": "Contains model information for the current button",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Gui",
+    "Buttons"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/buttonhighlightmodel/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/acceltween": "file:../acceltween",
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/blend": "file:../blend",
+    "@quenty/instanceutils": "file:../instanceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/rectutils": "file:../rectutils",
+    "@quenty/rx": "file:../rx",
+    "@quenty/steputils": "file:../steputils",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

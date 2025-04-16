@@ -1,0 +1,7 @@
+{
+  "name": "roblox-api-dump",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

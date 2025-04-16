@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/humanoidmovedirectionutils",
+  "version": "10.8.4",
+  "description": "Gets the relative move direction from the camera and the humanoid allowing Roblox's input system to be layered on top of a camera system.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Character"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/humanoidmovedirectionutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/cframeutils": "file:../cframeutils",
+    "@quenty/loader": "file:../loader"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

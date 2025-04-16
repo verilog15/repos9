@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/boundingboxutils",
+  "version": "4.3.2",
+  "description": "Bounding box utilties. Prefer model:GetBoundingBox() in most cases. However, sometimes grouping isn't possible.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Geometry"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/boundingboxutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

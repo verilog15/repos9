@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/region3int16utils",
+  "version": "10.8.4",
+  "description": "Module for working with Region3int16",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Region3"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/region3int16utils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/vector3int16utils": "file:../vector3int16utils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

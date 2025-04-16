@@ -1,0 +1,7 @@
+{
+  "name": "settings-inputkeymap",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

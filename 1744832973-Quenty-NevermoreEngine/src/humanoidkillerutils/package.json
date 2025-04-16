@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/humanoidkillerutils",
+  "version": "2.3.3",
+  "description": "Tags and retrieves killer",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Character"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/humanoidkillerutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

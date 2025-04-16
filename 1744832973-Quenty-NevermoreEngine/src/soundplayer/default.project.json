@@ -1,0 +1,7 @@
+{
+  "name": "soundplayer",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

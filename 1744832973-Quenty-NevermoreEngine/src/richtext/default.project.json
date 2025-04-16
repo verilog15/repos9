@@ -1,0 +1,7 @@
+{
+  "name": "richtext",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

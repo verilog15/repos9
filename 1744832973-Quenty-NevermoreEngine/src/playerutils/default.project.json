@@ -1,0 +1,7 @@
+{
+  "name": "playerutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

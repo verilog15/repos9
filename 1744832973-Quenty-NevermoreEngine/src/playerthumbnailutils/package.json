@@ -1,0 +1,34 @@
+{
+  "name": "@quenty/playerthumbnailutils",
+  "version": "10.10.4",
+  "description": "Reimplementation of Player:GetUserThumbnailAsync but as a promise with retry logic",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Thumbnail"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/playerthumbnailutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/loader": "file:../loader",
+    "@quenty/promise": "file:../promise"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

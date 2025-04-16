@@ -1,0 +1,7 @@
+{
+  "name": "bezierutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

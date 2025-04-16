@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/qgui",
+  "version": "2.3.4",
+  "description": "A group of utility functions to be used to help create visual effectcs with ROBLOX GUIs",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Legacy"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/qgui/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

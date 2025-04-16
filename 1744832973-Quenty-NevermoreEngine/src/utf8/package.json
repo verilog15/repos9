@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/utf8",
+  "version": "2.3.3",
+  "description": "UTF8 utility library",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "utf8"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/utf8/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

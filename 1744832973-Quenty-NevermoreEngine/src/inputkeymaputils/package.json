@@ -1,0 +1,50 @@
+{
+  "name": "@quenty/inputkeymaputils",
+  "version": "14.23.3",
+  "description": "System to define rebindable key bindings and inputs for Roblox.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Input",
+    "InputMap"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/inputkeymaputils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/brio": "file:../brio",
+    "@quenty/clienttranslator": "file:../clienttranslator",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/enumutils": "file:../enumutils",
+    "@quenty/inputmode": "file:../inputmode",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/observablecollection": "file:../observablecollection",
+    "@quenty/pseudolocalize": "file:../pseudolocalize",
+    "@quenty/rx": "file:../rx",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/statestack": "file:../statestack",
+    "@quenty/string": "file:../string",
+    "@quenty/table": "file:../table",
+    "@quenty/valuebaseutils": "file:../valuebaseutils",
+    "@quenty/valueobject": "file:../valueobject"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

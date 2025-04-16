@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/buttonutils",
+  "version": "2.2.2",
+  "description": "Provides utility for editing buttons",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Utility"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/buttonutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

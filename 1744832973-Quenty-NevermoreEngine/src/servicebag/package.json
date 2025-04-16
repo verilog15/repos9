@@ -1,0 +1,36 @@
+{
+  "name": "@quenty/servicebag",
+  "version": "11.11.4",
+  "description": "Service providing mechanisms for Nevermore",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Assembly",
+    "Services"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/services/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/loader": "file:../loader",
+    "@quenty/signal": "file:../signal"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

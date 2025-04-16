@@ -1,0 +1,7 @@
+{
+  "name": "cframeserializer",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

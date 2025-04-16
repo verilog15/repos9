@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/time",
+  "version": "2.4.2",
+  "description": "Library handles time based parsing / operations. Untested. Based off of PHP's time system. Note: This library is out of date, and does not necessarily work. I recommend using os.time()",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Time"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/time/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

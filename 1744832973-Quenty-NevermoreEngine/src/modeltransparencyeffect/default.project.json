@@ -1,0 +1,7 @@
+{
+  "name": "modeltransparencyeffect",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

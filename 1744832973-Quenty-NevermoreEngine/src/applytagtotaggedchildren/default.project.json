@@ -1,0 +1,7 @@
+{
+  "name": "applytagtotaggedchildren",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

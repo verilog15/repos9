@@ -1,0 +1,7 @@
+{
+  "name": "marketplaceutils",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}

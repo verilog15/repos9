@@ -1,0 +1,30 @@
+{
+  "name": "@quenty/steputils",
+  "version": "3.5.5",
+  "description": "Binds animations into step, where the animation only runs as needed",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Events"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/steputils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

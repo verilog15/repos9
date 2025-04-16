@@ -1,0 +1,42 @@
+{
+  "name": "@quenty/hintscoringutils",
+  "version": "14.20.3",
+  "description": "Utility functions that let you score a proximity prompt (i.e. a Hint) based upon its relation to a character in 3D space.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Input",
+    "Hint"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/hintscoringutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/adorneeutils": "file:../adorneeutils",
+    "@quenty/boundingboxutils": "file:../boundingboxutils",
+    "@quenty/camera": "file:../camera",
+    "@quenty/draw": "file:../draw",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/math": "file:../math",
+    "@quenty/region3utils": "file:../region3utils",
+    "@quenty/vector3utils": "file:../vector3utils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

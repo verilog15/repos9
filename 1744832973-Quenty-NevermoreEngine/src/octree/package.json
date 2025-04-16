@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/octree",
+  "version": "11.8.4",
+  "description": "Octree implementation for Roblox - fast spatial queries",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "octree",
+    "spatial"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/octree/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/draw": "file:../draw",
+    "@quenty/loader": "file:../loader"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

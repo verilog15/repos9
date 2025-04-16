@@ -1,0 +1,40 @@
+{
+  "name": "@quenty/valueobject",
+  "version": "13.17.3",
+  "description": "To work like value objects in Roblox and track a single item with .Changed events",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "event",
+    "valueobject"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/valueobject/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/brio": "file:../brio",
+    "@quenty/ducktype": "file:../ducktype",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/rx": "file:../rx",
+    "@quenty/signal": "file:../signal",
+    "@quenty/valuebaseutils": "file:../valuebaseutils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

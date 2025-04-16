@@ -1,0 +1,59 @@
+{
+  "name": "@quenty/gameproductservice",
+  "version": "14.24.3",
+  "description": "Generalized monetization system for handling products and purchases correctly.",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/maid/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@quenty/attributeutils": "file:../attributeutils",
+    "@quenty/avatareditorutils": "file:../avatareditorutils",
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/binder": "file:../binder",
+    "@quenty/brio": "file:../brio",
+    "@quenty/cmdrservice": "file:../cmdrservice",
+    "@quenty/enumutils": "file:../enumutils",
+    "@quenty/gameconfig": "file:../gameconfig",
+    "@quenty/instanceutils": "file:../instanceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/maid": "file:../maid",
+    "@quenty/marketplaceutils": "file:../marketplaceutils",
+    "@quenty/observablecollection": "file:../observablecollection",
+    "@quenty/playerbinder": "file:../playerbinder",
+    "@quenty/playerutils": "file:../playerutils",
+    "@quenty/promise": "file:../promise",
+    "@quenty/promisemaid": "file:../promisemaid",
+    "@quenty/receiptprocessing": "file:../receiptprocessing",
+    "@quenty/remoting": "file:../remoting",
+    "@quenty/rx": "file:../rx",
+    "@quenty/rxbinderutils": "file:../rxbinderutils",
+    "@quenty/servicebag": "file:../servicebag",
+    "@quenty/signal": "file:../signal",
+    "@quenty/statestack": "file:../statestack",
+    "@quenty/string": "file:../string",
+    "@quenty/table": "file:../table",
+    "@quenty/tie": "file:../tie",
+    "@quenty/valueobject": "file:../valueobject"
+  }
+}

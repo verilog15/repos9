@@ -1,0 +1,21 @@
+{
+  "name": "permissionprovidertest",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "permissionprovider": {
+        "$path": ".."
+      },
+      "Script": {
+        "$path": "scripts/Server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Main": {
+          "$path": "scripts/Client"
+        }
+      }
+    }
+  }
+}

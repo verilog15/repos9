@@ -1,0 +1,35 @@
+{
+  "name": "@quenty/overriddenproperty",
+  "version": "10.9.3",
+  "description": "Sets properties on the client and then replicates them to the server",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Network"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/overriddenproperty/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/baseobject": "file:../baseobject",
+    "@quenty/loader": "file:../loader",
+    "@quenty/throttle": "file:../throttle"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

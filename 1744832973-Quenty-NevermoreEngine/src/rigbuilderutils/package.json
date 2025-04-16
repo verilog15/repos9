@@ -1,0 +1,42 @@
+{
+  "name": "@quenty/rigbuilderutils",
+  "version": "10.19.3",
+  "description": "Utility functions for debugging, builds a Roblox character rig",
+  "keywords": [
+    "Roblox",
+    "Nevermore",
+    "Lua",
+    "Character",
+    "Debug"
+  ],
+  "bugs": {
+    "url": "https://github.com/Quenty/NevermoreEngine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quenty/NevermoreEngine.git",
+    "directory": "src/rigbuilderutils/"
+  },
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/quenty"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Quenty"
+  ],
+  "dependencies": {
+    "@quenty/assetserviceutils": "file:../assetserviceutils",
+    "@quenty/humanoiddescriptionutils": "file:../humanoiddescriptionutils",
+    "@quenty/insertserviceutils": "file:../insertserviceutils",
+    "@quenty/loader": "file:../loader",
+    "@quenty/promise": "file:../promise"
+  },
+  "devDependencies": {
+    "@quenty/camerastoryutils": "file:../camerastoryutils",
+    "@quenty/maid": "file:../maid"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

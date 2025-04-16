@@ -1,0 +1,7 @@
+{
+  "name": "colorpicker",
+  "globIgnorePaths": [ "**/.package-lock.json" ],
+  "tree": {
+    "$path": "src"
+  }
+}
