@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+// TODO: Adjust these colors to increase contrast a bit and use the without
+//       adjustments as admonition colors below.
+$red: #cb3c33 !default;
+$orange: #d56c00 !default;
+$yellow: #f4c72f !default;
+$green: #259a12 !default;
+$turquoise: #00a1b7 !default;
+$cyan: #3489da !default;
+$blue: #3c5dcd !default;
+$purple: #9558b2 !default;
+
+// TODO: Remove adjustments when colors above are adjusted.
+$info: $blue;
+$success: $green;
+$warning: adjust-color($yellow, $hue: 2, $saturation: 10, $lightness: -24);
+$danger: $red;
+$compat: $cyan;
+$todo: $purple;
+$admonition-default: hsl(0, 0%, 29%);
+
+// slightly increase contrast over default l: 48%
+$grey: hsl(0, 0%, 42%);
+
+@import "documenter/utilities";
+@import "documenter/variables";
+
+@import "bulma/utilities/all";
+@import "bulma/helpers/all";
+@import "bulma/base/all";
+
+@import "documenter/overrides";
+
+@import "bulma/elements/all";
+@import "bulma/form/all";
+@import "bulma/components/all";
+@import "bulma/grid/all";
+@import "bulma/layout/all";
+
+@import "documenter/elements";
+@import "documenter/components/all";
+@import "documenter/patches";
+@import "documenter/layout/all";
+
+@import "documenter/ansicolors";
+
+// highlight.js color scheme override for the julia> prompt
+code.language-julia-repl > span.hljs-meta {
+  color: $ansi-green;
+  font-weight: bolder;
+}
+
+// Workaround to compile in highlightjs theme, so that we could have different
+// themes for both
+@import "highlightjs/default";
+
+.gap-4 {
+  gap: 1rem;
+}

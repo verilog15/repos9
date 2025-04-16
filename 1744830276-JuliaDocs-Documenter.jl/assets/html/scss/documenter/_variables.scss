@@ -1,0 +1,118 @@
+// Variable definitions. Some are Documenter-specific, others are setting Bulma variables.
+
+
+// Colors
+// ------
+$primary: #4eb5de !default;
+
+$red: #cb3c33 !default;
+$orange: #d56c00 !default;
+$yellow: #f4c72f !default;
+$green: #259a12 !default;
+$turquoise: #00a1b7 !default;
+$cyan: #3489da !default;
+$blue: #3c5dcd !default;
+$purple: #9558b2 !default;
+
+$link: #2e63b8 !default;
+$text: #222222 !default;
+$text-strong: $text !default;
+$code: #000000 !default;
+// The inline <code> tags get rendered on various different backgrounds. Therefore, in order
+// to make sure it always renders nicely, we'll just use transparent black color to make the
+// background of the <code> elements slightly darker.
+$code-background: rgba(0, 0, 0, 0.05) !default;
+$code-padding: 0.1em;
+
+$documenter-docstring-background: transparent !default;
+
+// Shared configuration for docstrings/code snippets/admonitions etc.
+$documenter-element-border-width: 2px;
+$documenter-element-border-radius: 4px;
+
+$documenter-docstring-border-width: $documenter-element-border-width;
+$documenter-docstring-border-radius: $documenter-element-border-radius;
+$documenter-codeblock-border-width: $documenter-element-border-width;
+$documenter-codeblock-border-radius: $documenter-element-border-radius;
+$documenter-admonition-border-width: $documenter-element-border-width;
+$documenter-admonition-border-radius: $documenter-element-border-radius;
+
+$documenter-is-dark-theme: false !default;
+
+// Helper functions
+// ----------------
+// Declares the amount of lightness modifier used in the darken-color and lighten-color
+// functions. Setting this to a negative value is useful for dark themes.
+$lightness-unit: 8% !default;
+// Uses adjust-color to create a darker version of $color
+@function darken-color($color, $factor) {
+  @return adjust-color($color, $lightness: -$factor*$lightness-unit);
+}
+// Uses adjust-color to create a lighter version of $color
+@function lighten-color($color, $factor) {
+  @return adjust-color($color, $lightness: $factor*$lightness-unit);
+}
+
+
+// Fonts
+// -----
+// Declares the font family for the main text.
+$family-sans-serif: 'Lato Medium', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$family-monospace: 'JuliaMono', 'SFMono-Regular', 'Menlo', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono', monospace !default;
+// Note: declaring a font family here does not necessarily mean that it will be available
+// for the user. For uncommon fonts it is up to the user to also provide the necessary font
+// assets, e.g. via a CDN, in the makedocs() call.
+
+
+// Shadows
+// -------
+// Shadows are used to visually elevate UI elements that are "floating" (e.g. the sidebar
+// on mobile layout).
+$shadow: #bbb !default;
+$shadow-size: 0.2rem !default;
+$shadow-blur: 0.4rem !default;
+
+
+// Layout
+// ------
+$body-overflow-x: auto !default;
+$body-size: 16px !default;
+$documenter-max-width: 50rem !default;
+$documenter-sidebar-width: 18rem !default;
+
+$documenter-sidebar-main-gap: 2rem !default;
+$documenter-main-padding-right: 1rem !default;
+$documenter-main-padding: 1rem !default;
+
+// We'll override the Bulma $tablet width, which is the point at which the
+// layout switches between the mobile and tablet modes. Note: $tablet needs
+// to be in px, hence the unit conversion.
+$desktop: round($body-size * ($documenter-max-width + $documenter-sidebar-width + $documenter-sidebar-main-gap + $documenter-main-padding-right - 5rem)/1rem) !default;
+
+// Padding for admonitions and docstrings.
+// We'll try to keep the left padding consistent between the various container
+// elements:
+$documenter-container-left-padding: 0.75rem;
+$documenter-admonition-header-padding: 0.5rem $documenter-container-left-padding;
+$documenter-admonition-body-padding: 0.5rem $documenter-container-left-padding;
+$documenter-docstring-header-padding: 0.5rem $documenter-container-left-padding;
+$documenter-docstring-body-padding-h: $documenter-container-left-padding;
+$documenter-docstring-body-padding-v: 0.75rem;
+$documenter-docstring-body-padding: $documenter-docstring-body-padding-v $documenter-docstring-body-padding-h;
+
+// Search Results variables
+$search-result-link-hover: rgba(0, 128, 128, 0.1) !default;
+$search-result-link-text-color: #f1f5f9 !default;
+$search-result-link-text-background-color: #333 !default;
+$search-result-title-text-color: #333 !default;
+$search-result-badge-color: whitesmoke !default;
+$search-result-badge-background-color: #33415580 !default;
+$search-modal-scrollbar-background-color: gray !default;
+$search-modal-kbd-color: rgba(0, 0, 0, 0.6) !default;
+$search-filter-color: #333 !default;
+$search-filter-background-color: whitesmoke !default;
+$search-modal-selected-filter-color: whitesmoke !default;
+$search-modal-selected-filter-background-color: rgba(139, 0, 139, 0.5) !default;
+$search-result-highlight: hsl(48, 100%, 67%) !default;
+
+$input-placeholder-color: #707070 !default;

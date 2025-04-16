@@ -1,0 +1,17 @@
+.vscode
+
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+Manifest.toml
+
+# Ignore all build/ and builds/ directories
+build/
+builds/
+
+/test/themes/dev/
+/test/quietly-logs/
+/docs/dev/
+/docs/build-pdf/
+/docs/site/
+/docs/src/release-notes.md
