@@ -1,0 +1,11 @@
+--- src/TerrariaNetCore/Terraria/BitsByte.cs
++++ src/tModLoader/Terraria/BitsByte.cs
+@@ -4,7 +_,7 @@
+ 
+ namespace Terraria;
+ 
+-public struct BitsByte
++public partial struct BitsByte
+ {
+ 	private static bool Null;
+ 	private byte value;

@@ -1,0 +1,11 @@
+--- src/TerrariaNetCore/Terraria/DataStructures/Point16.cs
++++ src/tModLoader/Terraria/DataStructures/Point16.cs
+@@ -2,7 +_,7 @@
+ 
+ namespace Terraria.DataStructures;
+ 
+-public struct Point16
++public partial struct Point16
+ {
+ 	public readonly short X;
+ 	public readonly short Y;

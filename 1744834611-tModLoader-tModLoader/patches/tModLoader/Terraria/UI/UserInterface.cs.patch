@@ -1,0 +1,77 @@
+--- src/TerrariaNetCore/Terraria/UI/UserInterface.cs
++++ src/tModLoader/Terraria/UI/UserInterface.cs
+@@ -7,7 +_,7 @@
+ 
+ namespace Terraria.UI;
+ 
+-public class UserInterface
++public partial class UserInterface
+ {
+ 	private delegate void MouseElementEvent(UIElement element, UIMouseEvent evt);
+ 
+@@ -77,6 +_,9 @@
+ 	{
+ 		LeftMouse.Clear();
+ 		RightMouse.Clear();
++		MiddleMouse.Clear();
++		XButton1Mouse.Clear();
++		XButton2Mouse.Clear();
+ 	}
+ 
+ 	public void ResetLasts()
+@@ -113,6 +_,9 @@
+ 	{
+ 		LeftMouse.WasDown = Main.mouseLeft;
+ 		RightMouse.WasDown = Main.mouseRight;
++		MiddleMouse.WasDown = Main.mouseMiddle;
++		XButton1Mouse.WasDown = Main.mouseXButton1;
++		XButton2Mouse.WasDown = Main.mouseXButton2;
+ 	}
+ 
+ 	private void ResetState()
+@@ -143,6 +_,21 @@
+ 		UIElement uIElement = (Main.hasFocus ? _currentState.GetElementAt(MousePosition) : null);
+ 		_clickDisabledTimeRemaining = Math.Max(0.0, _clickDisabledTimeRemaining - time.ElapsedGameTime.TotalMilliseconds);
+ 		bool num = _clickDisabledTimeRemaining > 0.0;
++		
++		try {
++			Update_Inner(time, uIElement, ref num);
++		}
++		catch {
++			throw;
++		}
++		finally {
++			Update_End(time);
++		}
++	}
++
++	// A split to add a try-catch-finally block without indentation issues.
++	private void Update_Inner(GameTime time, UIElement uIElement, ref bool num)
++	{
+ 		if (uIElement != _lastElementHover) {
+ 			if (_lastElementHover != null)
+ 				_lastElementHover.MouseOut(new UIMouseEvent(_lastElementHover, MousePosition));
+@@ -154,13 +_,23 @@
+ 		if (!num) {
+ 			HandleClick(LeftMouse, time, Main.mouseLeft && Main.hasFocus, uIElement);
+ 			HandleClick(RightMouse, time, Main.mouseRight && Main.hasFocus, uIElement);
++			HandleClick(MiddleMouse, time, Main.mouseMiddle && Main.hasFocus, uIElement);
++			HandleClick(XButton1Mouse, time, Main.mouseXButton1 && Main.hasFocus, uIElement);
++			HandleClick(XButton2Mouse, time, Main.mouseXButton2 && Main.hasFocus, uIElement);
+ 		}
+ 
+ 		if (PlayerInput.ScrollWheelDeltaForUI != 0) {
+ 			uIElement?.ScrollWheel(new UIScrollWheelEvent(uIElement, MousePosition, PlayerInput.ScrollWheelDeltaForUI));
++			// Moved to after SystemHooks.UpdateUI(gameTime);
++			/*
+ 			PlayerInput.ScrollWheelDeltaForUI = 0;
++			*/
+ 		}
++	}
+ 
++	// Another split, to be called in 'finally'.
++	private void Update_End(GameTime time)
++	{
+ 		if (_currentState != null)
+ 			_currentState.Update(time);
+ 	}

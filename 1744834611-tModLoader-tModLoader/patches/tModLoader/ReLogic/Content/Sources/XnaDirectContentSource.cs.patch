@@ -1,0 +1,44 @@
+--- src/TerrariaNetCore/ReLogic/Content/Sources/XnaDirectContentSource.cs
++++ src/tModLoader/ReLogic/Content/Sources/XnaDirectContentSource.cs
+@@ -1,9 +_,36 @@
+ using System;
+ using System.Collections.Generic;
+ using System.IO;
++using System.Linq;
+ 
+ namespace ReLogic.Content.Sources;
+ 
++//TML: Now derives from ContentSource instead of IContentSource
++public class XnaDirectContentSource : ContentSource
++{
++	private readonly string[] _rootDirectories;
++
++	public XnaDirectContentSource(IEnumerable<string> rootDirectories)
++	{
++		_rootDirectories = rootDirectories.Select(AssetPathHelper.CleanPath).ToArray();
++		SetAssetNames(
++			_rootDirectories
++				.SelectMany(rootDir => Directory.GetFiles(rootDir, "*.xnb", SearchOption.AllDirectories).Select(path => path.Substring(rootDir.Length + 1)))
++				.ToHashSet());
++	}
++
++	public override Stream OpenStream(string assetName)
++	{
++		try {
++			return File.OpenRead(_rootDirectories.Select(rootDir => Path.Combine(rootDir, assetName)).First(File.Exists));
++		}
++		catch (Exception innerException) {
++			throw AssetLoadException.FromMissingAsset(assetName, innerException);
++		}
++	}
++}
++
++/*
+ public class XnaDirectContentSource : IContentSource
+ {
+ 	private readonly string _rootDirectory;
+@@ -73,3 +_,4 @@
+ 
+ 	public bool TryGetRejections(List<string> rejectionReasons) => _rejections.TryGetRejections(rejectionReasons);
+ }
++*/

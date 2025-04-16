@@ -1,0 +1,79 @@
+--- src/TerrariaNetCore/Terraria/GameContent/ItemDropRules/ItemDropDatabase.cs
++++ src/tModLoader/Terraria/GameContent/ItemDropRules/ItemDropDatabase.cs
+@@ -1,12 +_,13 @@
+ using System.Collections.Generic;
+ using System.Linq;
+ using Terraria.ID;
++using Terraria.ModLoader;
+ 
+ namespace Terraria.GameContent.ItemDropRules;
+ 
+-public class ItemDropDatabase
++public partial class ItemDropDatabase
+ {
+-	private List<IItemDropRule> _globalEntries = new List<IItemDropRule>();
++	internal List<IItemDropRule> _globalEntries = new List<IItemDropRule>();
+ 	private Dictionary<int, List<IItemDropRule>> _entriesByNpcNetId = new Dictionary<int, List<IItemDropRule>>();
+ 	private Dictionary<int, List<int>> _npcNetIdsByType = new Dictionary<int, List<int>>();
+ 	private int _masterModeDropRng = 4;
+@@ -30,6 +_,11 @@
+ 		}
+ 	}
+ 
++	/// <summary>
++	/// Retrieves all the registered <see cref="IItemDropRule"/> for this specific NPC type.
++	/// </summary>
++	/// <param name="npcNetId"></param>
++	/// <param name="includeGlobalDrops">If true then global drop rules will also be retrieved</param>
+ 	public List<IItemDropRule> GetRulesForNPCID(int npcNetId, bool includeGlobalDrops = true)
+ 	{
+ 		List<IItemDropRule> list = new List<IItemDropRule>();
+@@ -60,7 +_,7 @@
+ 		return entry;
+ 	}
+ 
+-	private void RegisterToNPCNetId(int npcNetId, IItemDropRule entry)
++	public void RegisterToNPCNetId(int npcNetId, IItemDropRule entry)
+ 	{
+ 		if (!_entriesByNpcNetId.ContainsKey(npcNetId))
+ 			_entriesByNpcNetId[npcNetId] = new List<IItemDropRule>();
+@@ -95,7 +_,7 @@
+ 		return entry;
+ 	}
+ 
+-	private void RemoveFromNPCNetId(int npcNetId, IItemDropRule entry)
++	public void RemoveFromNPCNetId(int npcNetId, IItemDropRule entry)
+ 	{
+ 		if (_entriesByNpcNetId.ContainsKey(npcNetId))
+ 			_entriesByNpcNetId[npcNetId].Remove(entry);
+@@ -143,6 +_,30 @@
+ 		RegisterMimic();
+ 		RegisterEclipse();
+ 		RegisterBloodMoonFishing();
++
++		// TML code: [[
++		RegisterBossBags();
++		RegisterCrateDrops();
++		RegisterObsidianLockbox();
++		RegisterLockbox();
++		RegisterHerbBag();
++		RegisterGoodieBag();
++		RegisterPresent();
++		RegisterCanOfWorms();
++		RegisterOyster();
++		RegisterCapricorns();
++
++		NPCLoader.ModifyGlobalLoot(new GlobalLoot(this));
++
++		foreach (KeyValuePair<int, NPC> pair in ContentSamples.NpcsByNetId) {
++			NPCLoader.ModifyNPCLoot(pair.Value, new NPCLoot(pair.Key, this));
++		}
++
++		foreach (KeyValuePair<int, Item> pair in ContentSamples.ItemsByType) {
++			ItemLoader.ModifyItemLoot(pair.Value, new ItemLoot(pair.Key, this));
++		}
++		// ]]
++
+ 		TrimDuplicateRulesForNegativeIDs();
+ 	}
+ 

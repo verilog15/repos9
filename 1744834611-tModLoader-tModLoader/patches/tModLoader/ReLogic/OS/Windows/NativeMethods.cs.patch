@@ -1,0 +1,11 @@
+--- src/TerrariaNetCore/ReLogic/OS/Windows/NativeMethods.cs
++++ src/tModLoader/ReLogic/OS/Windows/NativeMethods.cs
+@@ -6,7 +_,7 @@
+ 
+ namespace ReLogic.OS.Windows;
+ 
+-internal static class NativeMethods
++internal static partial class NativeMethods
+ {
+ 	public delegate IntPtr WndProcCallback(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+ 

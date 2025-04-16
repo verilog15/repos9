@@ -1,0 +1,66 @@
+--- src/TerrariaNetCore/Terraria/GameContent/UI/States/UIWorldSelect.cs
++++ src/tModLoader/Terraria/GameContent/UI/States/UIWorldSelect.cs
+@@ -1,6 +_,8 @@
+ using System;
+ using System.Collections.Generic;
++using System.IO;
+ using System.Linq;
++using System.Threading.Tasks;
+ using Microsoft.Xna.Framework;
+ using Microsoft.Xna.Framework.Graphics;
+ using Terraria.Audio;
+@@ -11,10 +_,12 @@
+ using Terraria.Localization;
+ using Terraria.UI;
+ using Terraria.UI.Gamepad;
++using Terraria.ModLoader;
++using Terraria.ModLoader.UI;
+ 
+ namespace Terraria.GameContent.UI.States;
+ 
+-public class UIWorldSelect : UIState
++public partial class UIWorldSelect : UIState
+ {
+ 	private UIList _worldList;
+ 	private UITextPanel<LocalizedText> _backPanel;
+@@ -76,6 +_,7 @@
+ 		uIElement.Append(uITextPanel3);
+ 		_newPanel = uITextPanel3;
+ 		Append(uIElement);
++		InitializeMigrationPanel();
+ 	}
+ 
+ 	public override void Recalculate()
+@@ -126,6 +_,7 @@
+ 	public override void OnActivate()
+ 	{
+ 		Main.LoadWorlds();
++		ActivateMigrationPanel();
+ 		UpdateWorldsList();
+ 		if (PlayerInput.UsingGamepadUI)
+ 			UILinkPointNavigator.ChangePoint(3000 + ((_worldList.Count == 0) ? 1 : 2));
+@@ -141,13 +_,23 @@
+ 		foreach (WorldFileData item in orderedEnumerable) {
+ 			_worldList.Add(new UIWorldListItem(item, num++, CanWorldBePlayed(item)));
+ 		}
++
++		_worldList.Add(_migrationPanel);
++
++		if (!orderedEnumerable.Any()) {
++			AddAutomaticWorldMigrationButtons();
++		}
+ 	}
+ 
+-	private bool CanWorldBePlayed(WorldFileData file)
++	internal static bool CanWorldBePlayed(WorldFileData file)
+ 	{
+ 		bool num = Main.ActivePlayerFileData.Player.difficulty == 3;
+ 		bool flag = file.GameMode == 3;
++
++		/*
+ 		return num == flag;
++		*/
++		return (num == flag) && SystemLoader.CanWorldBePlayed(Main.ActivePlayerFileData, file, out var _);
+ 	}
+ 
+ 	public override void Draw(SpriteBatch spriteBatch)

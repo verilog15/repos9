@@ -1,0 +1,128 @@
+--- src/TerrariaNetCore/Terraria/GameContent/UI/Elements/UIWorldListItem.cs
++++ src/tModLoader/Terraria/GameContent/UI/Elements/UIWorldListItem.cs
+@@ -1,3 +_,4 @@
++using System;
+ using Microsoft.Xna.Framework;
+ using Microsoft.Xna.Framework.Graphics;
+ using ReLogic.Content;
+@@ -6,12 +_,15 @@
+ using Terraria.GameContent.UI.States;
+ using Terraria.IO;
+ using Terraria.Localization;
++using Terraria.Utilities;
++using Terraria.ModLoader;
++using Terraria.ModLoader.Config;
+ using Terraria.Social;
+ using Terraria.UI;
+ 
+ namespace Terraria.GameContent.UI.Elements;
+ 
+-public class UIWorldListItem : AWorldListItem
++public partial class UIWorldListItem : AWorldListItem
+ {
+ 	private Asset<Texture2D> _dividerTexture;
+ 	private Asset<Texture2D> _innerPanelTexture;
+@@ -37,6 +_,9 @@
+ 		_orderInList = orderInList;
+ 		_data = data;
+ 		_canBePlayed = canBePlayed;
++		
++		InitializeTmlFields(data);
++		
+ 		LoadTextures();
+ 		InitializeAppearance();
+ 		_worldIcon = GetIconElement();
+@@ -96,6 +_,8 @@
+ 			Append(uIImageButton4);
+ 			num += 24f;
+ 		}
++		
++		AddTmlElements(data, ref num);
+ 
+ 		UIImageButton uIImageButton5 = new UIImageButton(_buttonRenameTexture);
+ 		uIImageButton5.VAlign = 1f;
+@@ -148,6 +_,8 @@
+ 		_buttonSeedTexture = Main.Assets.Request<Texture2D>("Images/UI/ButtonSeed");
+ 		_buttonRenameTexture = Main.Assets.Request<Texture2D>("Images/UI/ButtonRename");
+ 		_buttonDeleteTexture = Main.Assets.Request<Texture2D>("Images/UI/ButtonDelete");
++		
++		LoadTmlTextures();
+ 	}
+ 
+ 	private void InitializeAppearance()
+@@ -195,8 +_,12 @@
+ 	{
+ 		if (_data.IsCloudSave)
+ 			_buttonLabel.SetText(Language.GetTextValue("UI.MoveOffCloud"));
+-		else
+-			_buttonLabel.SetText(Language.GetTextValue("UI.MoveToCloud"));
++		else {
++			if (!ModLoader.Engine.Steam.CheckSteamCloudStorageSufficient(_fileSize))
++				_buttonLabel.SetText(Language.GetTextValue("tModLoader.CloudWarning"));
++			else
++				_buttonLabel.SetText(Language.GetTextValue("UI.MoveToCloud"));
++		}
+ 	}
+ 
+ 	private void PlayMouseOver(UIMouseEvent evt, UIElement listeningElement)
+@@ -231,8 +_,15 @@
+ 	{
+ 		if (_data.IsCloudSave)
+ 			_data.MoveToLocal();
+-		else
++		else {
++			// Only recalculate when about to put the file to cloud
++			ModLoader.Engine.Steam.RecalculateAvailableSteamCloudStorage();
++
++			if (!ModLoader.Engine.Steam.CheckSteamCloudStorageSufficient(_fileSize))
++				return; //Don't allow both the move to cloud, and the setting of the label
++
+ 			_data.MoveToCloud();
++		}
+ 
+ 		((UIImageButton)evt.Target).SetImage(_data.IsCloudSave ? _buttonCloudActiveTexture : _buttonCloudInactiveTexture);
+ 		if (_data.IsCloudSave)
+@@ -255,6 +_,9 @@
+ 
+ 	private void PlayGame(UIMouseEvent evt, UIElement listeningElement)
+ 	{
++		if (!_data.IsValid)
++			return;
++
+ 		if (listeningElement == evt.Target && !TryMovingToRejectionMenuIfNeeded(_data.GameMode)) {
+ 			_data.SetAsActive();
+ 			SoundEngine.PlaySound(10);
+@@ -281,6 +_,9 @@
+ 			return true;
+ 		}
+ 
++		if (_canBePlayed)
++			return false;
++
+ 		bool flag = Main.ActivePlayerFileData.Player.difficulty == 3;
+ 		bool isJourneyMode = value.IsJourneyMode;
+ 		if (flag && !isJourneyMode) {
+@@ -297,6 +_,13 @@
+ 			return true;
+ 		}
+ 
++		if (!SystemLoader.CanWorldBePlayed(Main.ActivePlayerFileData, _data, out var rejector)) {
++			SoundEngine.PlaySound(10);
++			Main.statusText = rejector.WorldCanBePlayedRejectionMessage(Main.ActivePlayerFileData, _data);
++			Main.menuMode = 1000000;
++			return true;
++		}
++
+ 		return false;
+ 	}
+ 
+@@ -351,6 +_,9 @@
+ 	{
+ 		if (obj is UIWorldListItem uIWorldListItem)
+ 			return _orderInList.CompareTo(uIWorldListItem._orderInList);
++
++		if (obj is UIPanel)
++			return -1;
+ 
+ 		return base.CompareTo(obj);
+ 	}

@@ -1,0 +1,106 @@
+--- src/TerrariaNetCore/ReLogic/Content/Asset.cs
++++ src/tModLoader/ReLogic/Content/Asset.cs
+@@ -1,12 +_,27 @@
+ using System;
++using System.Threading;
++using System.Threading.Tasks;
+ using ReLogic.Content.Sources;
++using Microsoft.Xna.Framework.Graphics;
++using ReLogic.Graphics;
++using Microsoft.Xna.Framework.Audio;
+ 
+ namespace ReLogic.Content;
+ 
++/// <summary>
++/// A class wrapping assets such as textures (<see cref="Texture2D"/>), shaders (<see cref="Effect"/>), fonts (<see cref="DynamicSpriteFont"/>), and sounds (<see cref="SoundEffect"/>). This class provides on-demand (asynchronous) loading and resource pack support. Modders should strive to always use this class when working with assets rather than the contained data for performance and compatibility.
++/// <para/> Read the <see href="https://github.com/tModLoader/tModLoader/wiki/Assets">Assets guide on the wiki</see> for more information on properly using the Asset class.
++/// </summary>
+ public sealed class Asset<T> : IAsset, IDisposable where T : class
+ {
+ 	public static readonly Asset<T> Empty = new Asset<T>("");
+ 
++	// Added by TML: [[
++	public static T DefaultValue { get; set; }
++
++	private T ownValue;
++	// ]]
++
+ 	public string Name { get; private set; }
+ 
+ 	public bool IsLoaded => State == AssetState.Loaded;
+@@ -17,7 +_,22 @@
+ 
+ 	public IContentSource Source { get; private set; }
+ 
++	/*
+ 	public T Value { get; private set; }
++	*/
++	/// <summary>
++	/// Retrieves the actual asset contained within.
++	/// <para/> If the asset has not yet been loaded (<see cref="IsLoaded"/>), then <see langword="null"/> is returned instead. For <c>Texture2D</c> specifically, however, a 1x1 transparent texture is returned to simplify logic drawing textures that might not be loaded yet.
++	/// </summary>
++	public T Value => IsLoaded ? ownValue : DefaultValue;
++
++	// Added by TML: [[
++	internal Action Continuation { get; set; }
++	
++	Action IAsset.Continuation { set => Continuation = value; }
++
++	public Action Wait { get; internal set; }
++	// ]]
+ 
+ 	internal Asset(string name)
+ 	{
+@@ -32,11 +_,10 @@
+ 
+ 	internal void Unload()
+ 	{
+-		if (Value is IDisposable disposable)
+-			disposable.Dispose();
++		(ownValue as IDisposable)?.Dispose();
+ 
+ 		State = AssetState.NotLoaded;
+-		Value = null;
++		ownValue = null;
+ 		Source = null;
+ 	}
+ 
+@@ -45,15 +_,19 @@
+ 		if (value == null)
+ 			throw new ArgumentNullException("value");
+ 
++		/*
+ 		if (source == null)
+ 			throw new ArgumentNullException("source");
+ 
+ 		if (Value is IDisposable disposable)
+ 			disposable.Dispose();
++		*/
+ 
+-		State = AssetState.Loaded;
+-		Value = value;
++		(ownValue as IDisposable)?.Dispose();
++		ownValue = value;
+ 		Source = source;
++		Thread.MemoryBarrier();
++		State = AssetState.Loaded;
+ 	}
+ 
+ 	internal void SetToLoadingState()
+@@ -66,12 +_,13 @@
+ 		if (IsDisposed)
+ 			return;
+ 
++		//TML: 'Value' changed to 'ownValue'.
+-		if (disposing && Value != null) {
++		if (disposing && ownValue != null) {
+-			IDisposable disposable = Value as IDisposable;
++			IDisposable disposable = ownValue as IDisposable;
+ 			if (IsLoaded)
+ 				disposable?.Dispose();
+ 
+-			Value = null;
++			ownValue = null;
+ 		}
+ 
+ 		IsDisposed = true;

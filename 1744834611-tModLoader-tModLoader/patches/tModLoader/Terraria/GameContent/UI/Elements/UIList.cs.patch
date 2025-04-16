@@ -1,0 +1,55 @@
+--- src/TerrariaNetCore/Terraria/GameContent/UI/Elements/UIList.cs
++++ src/tModLoader/Terraria/GameContent/UI/Elements/UIList.cs
+@@ -7,7 +_,7 @@
+ 
+ namespace Terraria.GameContent.UI.Elements;
+ 
+-public class UIList : UIElement, IEnumerable<UIElement>, IEnumerable
++public partial class UIList : UIElement, IEnumerable<UIElement>, IEnumerable
+ {
+ 	public delegate bool ElementSearchMethod(UIElement element);
+ 
+@@ -30,9 +_,11 @@
+ 		public override Rectangle GetViewCullingArea() => base.Parent.GetDimensions().ToRectangle();
+ 	}
+ 
++	//TML: Made public instead of protected.
+-	protected List<UIElement> _items = new List<UIElement>();
++	public List<UIElement> _items = new List<UIElement>();
+ 	protected UIScrollbar _scrollbar;
++	//TML: Made internal instead of private.
+-	private UIElement _innerList = new UIInnerList();
++	internal UIElement _innerList = new UIInnerList();
+ 	private float _innerListHeight;
+ 	public float ListPadding = 5f;
+ 	public Action<List<UIElement>> ManualSortMethod;
+@@ -60,6 +_,21 @@
+ 		}
+ 	}
+ 
++	public void Goto(ElementSearchMethod searchMethod, bool center = false)
++	{
++		var innerDimensionHeight = GetInnerDimensions().Height;
++		for (int i = 0; i < this._items.Count; i++) {
++			var item = this._items[i];
++			if (searchMethod(item)) {
++				this._scrollbar.ViewPosition = item.Top.Pixels;
++				if (center) {
++					this._scrollbar.ViewPosition = item.Top.Pixels - innerDimensionHeight / 2 + item.GetOuterDimensions().Height / 2;
++				}
++				return;
++			}
++		}
++	}
++
+ 	public virtual void Add(UIElement item)
+ 	{
+ 		_items.Add(item);
+@@ -71,6 +_,7 @@
+ 	public virtual bool Remove(UIElement item)
+ 	{
+ 		_innerList.RemoveChild(item);
++		// If order is stable doesn't make sense to reorder, left because it's in vanilla
+ 		UpdateOrder();
+ 		return _items.Remove(item);
+ 	}

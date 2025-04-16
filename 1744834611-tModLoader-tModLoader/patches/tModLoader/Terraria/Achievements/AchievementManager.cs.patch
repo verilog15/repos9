@@ -1,0 +1,12 @@
+--- src/TerrariaNetCore/Terraria/Achievements/AchievementManager.cs
++++ src/tModLoader/Terraria/Achievements/AchievementManager.cs
+@@ -33,7 +_,8 @@
+ 
+ 	public AchievementManager()
+ 	{
+-		if (SocialAPI.Achievements != null) {
++		//Solxan: Ensures achievements are saved
++		if (false /*SocialAPI.Achievements != null*/) {
+ 			_savePath = SocialAPI.Achievements.GetSavePath();
+ 			_isCloudSave = true;
+ 			_cryptoKey = SocialAPI.Achievements.GetEncryptionKey();

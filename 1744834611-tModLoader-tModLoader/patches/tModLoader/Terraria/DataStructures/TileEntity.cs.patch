@@ -1,0 +1,126 @@
+--- src/TerrariaNetCore/Terraria/DataStructures/TileEntity.cs
++++ src/tModLoader/Terraria/DataStructures/TileEntity.cs
+@@ -4,24 +_,32 @@
+ using Microsoft.Xna.Framework.Graphics;
+ using Terraria.Audio;
+ using Terraria.GameInput;
++using Terraria.ModLoader;
+ 
+ namespace Terraria.DataStructures;
+ 
+-public abstract class TileEntity
++public abstract partial class TileEntity
+ {
+ 	public static TileEntitiesManager manager;
+ 	public const int MaxEntitiesPerChunk = 1000;
+ 	public static object EntityCreationLock = new object();
++	/// <summary> Maps <see cref="ID"/> to TileEntity instances. </summary>
+ 	public static Dictionary<int, TileEntity> ByID = new Dictionary<int, TileEntity>();
++	/// <summary> Maps tile coordinate locations to the TileEntity at that location. </summary>
+ 	public static Dictionary<Point16, TileEntity> ByPosition = new Dictionary<Point16, TileEntity>();
+ 	public static int TileEntitiesNextID;
++	/// <summary> A unique ID for each TileEntity instance in the world. This ID is consistent in multiplayer. </summary>
+ 	public int ID;
++	/// <summary> The tile coordinate location of this TileEntity. Will typically be the top left corner of the corresponding multitile, but not necessarily. </summary>
+ 	public Point16 Position;
+ 	public byte type;
+ 
+ 	public static event Action _UpdateStart;
+ 	public static event Action _UpdateEnd;
+ 
++	// Force modders to use ModTileEntity, to prevent them from messing with vanilla saving/loading.
++	internal TileEntity() { }
++
+ 	public static int AssignNewID() => TileEntitiesNextID++;
+ 
+ 	public static void Clear()
+@@ -47,6 +_,8 @@
+ 	{
+ 		manager = new TileEntitiesManager();
+ 		manager.RegisterAll();
++
++		ModTileEntity.Initialize();
+ 	}
+ 
+ 	public static void PlaceEntityNet(int x, int y, int type)
+@@ -55,42 +_,70 @@
+ 			manager.NetPlaceEntity(type, x, y);
+ 	}
+ 
++	/// <summary>
++	/// Allows logic to execute every game update for this placed Tile Entity. Called on each placed Tile Entity.
++	/// <para/> This hook is not called for multiplayer clients. The <see cref="ID.MessageID.TileEntitySharing"/> network message will need be used to keep clients in sync if necessary. 
++	/// </summary>
+ 	public virtual void Update()
+ 	{
+ 	}
+ 
+-	public static void Write(BinaryWriter writer, TileEntity ent, bool networkSend = false)
++	// Vanilla's 'networkSend' actually meant that this isn't the TE's first synchronization.
++	// So I added lightSend parameters to have 'networkSend' in this method be true on initial syncs.
++	// - Mirsario
++
++	public static void Write(BinaryWriter writer, TileEntity ent, bool networkSend = false, bool lightSend = false)
+ 	{
++		lightSend &= networkSend;
++
+ 		writer.Write(ent.type);
+-		ent.WriteInner(writer, networkSend);
++		ent.WriteInner(writer, networkSend, lightSend);
+ 	}
+ 
+-	public static TileEntity Read(BinaryReader reader, bool networkSend = false)
++	public static TileEntity Read(BinaryReader reader, bool networkSend = false, bool lightSend = false)
+ 	{
++		lightSend &= networkSend;
++
+ 		byte id = reader.ReadByte();
+ 		TileEntity tileEntity = manager.GenerateInstance(id);
+ 		tileEntity.type = id;
+-		tileEntity.ReadInner(reader, networkSend);
++		tileEntity.ReadInner(reader, networkSend, lightSend);
+ 		return tileEntity;
+ 	}
+ 
+-	private void WriteInner(BinaryWriter writer, bool networkSend)
++	private void WriteInner(BinaryWriter writer, bool networkSend, bool lightSend)
+ 	{
+-		if (!networkSend)
++		if (!lightSend)
+ 			writer.Write(ID);
+ 
+ 		writer.Write(Position.X);
+ 		writer.Write(Position.Y);
++
++		//Call NetSend instead of the vanilla method when in modded contexts.
++		if (networkSend) {
++			NetSend(writer);
++
++			return;
++		}
++
+-		WriteExtraData(writer, networkSend);
++		WriteExtraData(writer, lightSend);
+ 	}
+ 
+-	private void ReadInner(BinaryReader reader, bool networkSend)
++	private void ReadInner(BinaryReader reader, bool networkSend, bool lightSend)
+ 	{
+-		if (!networkSend)
++		if (!lightSend)
+ 			ID = reader.ReadInt32();
+ 
+ 		Position = new Point16(reader.ReadInt16(), reader.ReadInt16());
++
++		//Call NetReceive instead of the vanilla method when in modded contexts.
++		if (networkSend) {
++			NetReceive(reader);
++
++			return;
++		}
++
+-		ReadExtraData(reader, networkSend);
++		ReadExtraData(reader, lightSend);
+ 	}
+ 
+ 	public virtual void WriteExtraData(BinaryWriter writer, bool networkSend)

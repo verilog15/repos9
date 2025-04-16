@@ -1,0 +1,10 @@
+--- src/TerrariaNetCore/Terraria/Map/IMapLayer.cs
++++ src/tModLoader/Terraria/Map/IMapLayer.cs
+@@ -1,6 +_,6 @@
+ namespace Terraria.Map;
+ 
+-public interface IMapLayer
++public partial interface IMapLayer
+ {
+ 	void Draw(ref MapOverlayDrawContext context, ref string text);
+ }

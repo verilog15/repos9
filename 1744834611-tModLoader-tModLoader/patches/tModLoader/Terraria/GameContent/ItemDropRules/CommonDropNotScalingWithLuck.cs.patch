@@ -1,0 +1,20 @@
+--- src/TerrariaNetCore/Terraria/GameContent/ItemDropRules/CommonDropNotScalingWithLuck.cs
++++ src/tModLoader/Terraria/GameContent/ItemDropRules/CommonDropNotScalingWithLuck.cs
+@@ -7,11 +_,16 @@
+ 	{
+ 	}
+ 
++	public CommonDropNotScalingWithLuck(int itemId, int chanceDenominator, int chanceNumerator, int amountDroppedMinimum, int amountDroppedMaximum)
++		: base(itemId, chanceDenominator, amountDroppedMinimum, amountDroppedMaximum, chanceNumerator)
++	{
++	}
++
+ 	public override ItemDropAttemptResult TryDroppingItem(DropAttemptInfo info)
+ 	{
+ 		ItemDropAttemptResult result;
+ 		if (info.rng.Next(chanceDenominator) < chanceNumerator) {
+-			CommonCode.DropItemFromNPC(info.npc, itemId, info.rng.Next(amountDroppedMinimum, amountDroppedMaximum + 1));
++			CommonCode.DropItem(info, itemId, info.rng.Next(amountDroppedMinimum, amountDroppedMaximum + 1));
+ 			result = default(ItemDropAttemptResult);
+ 			result.State = ItemDropAttemptResultState.Success;
+ 			return result;

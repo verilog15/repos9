@@ -1,0 +1,8 @@
+zh-Hans 16
+ru-RU 6
+pt-BR 10
+pl-PL 11
+it-IT 959
+fr-FR 574
+es-ES 383
+de-DE 384

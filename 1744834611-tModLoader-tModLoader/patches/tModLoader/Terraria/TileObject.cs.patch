@@ -1,0 +1,89 @@
+--- src/TerrariaNetCore/Terraria/TileObject.cs
++++ src/tModLoader/Terraria/TileObject.cs
+@@ -14,6 +_,7 @@
+ 	public int yCoord;
+ 	public int type;
+ 	public int style;
++	/// <summary> Note: The index of the alternate within the <see cref="TileObjectData.Alternates"/>, not the alternate placement style offset (<see cref="TileObjectData.Style"/>) </summary>
+ 	public int alternate;
+ 	public int random;
+ 	public static TileObject Empty = default(TileObject);
+@@ -139,7 +_,8 @@
+ 		return true;
+ 	}
+ 
++	//TML: Added 'checkStay' parameter.
+-	public static bool CanPlace(int x, int y, int type, int style, int dir, out TileObject objectData, bool onlyCheck = false, int? forcedRandom = null)
++	public static bool CanPlace(int x, int y, int type, int style, int dir, out TileObject objectData, bool onlyCheck = false, int? forcedRandom = null, bool checkStay = false)
+ 	{
+ 		TileObjectData tileData = TileObjectData.GetTileData(type, style);
+ 		objectData = Empty;
+@@ -283,7 +_,7 @@
+ 			for (int i = 0; i < tileData2.Width; i++) {
+ 				for (int j = 0; j < tileData2.Height; j++) {
+ 					Tile tileSafely = Framing.GetTileSafely(num8 + i, num9 + j);
+-					bool flag2 = !tileData2.LiquidPlace(tileSafely);
++					bool flag2 = !tileData2.LiquidPlace(tileSafely, checkStay);
+ 					bool flag3 = false;
+ 					if (tileData2.AnchorWall) {
+ 						num25 += 1f;
+@@ -294,7 +_,7 @@
+ 					}
+ 
+ 					bool flag4 = false;
+-					if (tileSafely.active() && (!Main.tileCut[tileSafely.type] || tileSafely.type == 484 || tileSafely.type == 654) && !TileID.Sets.BreakableWhenPlacing[tileSafely.type])
++					if (tileSafely.active() && (!Main.tileCut[tileSafely.type] || tileSafely.type == 484 || tileSafely.type == 654) && !TileID.Sets.BreakableWhenPlacing[tileSafely.type] && !checkStay)
+ 						flag4 = true;
+ 
+ 					if (flag4 || flag2 || flag3) {
+@@ -373,7 +_,7 @@
+ 					Tile tileSafely = Framing.GetTileSafely(num8 + num29, num9 + num28);
+ 					bool flag6 = false;
+ 					if (tileSafely.nactive()) {
+-						if (Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0))
++						if ((anchorBottom.type & AnchorType.SolidTile) == AnchorType.SolidTile && Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0)) // AnchorTop
+ 							flag6 = tileData2.isValidTileAnchor(tileSafely.type);
+ 
+ 						if (!flag6 && (anchorBottom.type & AnchorType.SolidBottom) == AnchorType.SolidBottom && ((Main.tileSolid[tileSafely.type] && (!Main.tileSolidTop[tileSafely.type] || (TileID.Sets.Platforms[tileSafely.type] && (tileSafely.halfBrick() || tileSafely.topSlope())))) || tileSafely.halfBrick() || tileSafely.topSlope()) && !TileID.Sets.NotReallySolid[tileSafely.type] && !tileSafely.bottomSlope())
+@@ -424,7 +_,7 @@
+ 					Tile tileSafely = Framing.GetTileSafely(num8 + width, num9 + num30);
+ 					bool flag7 = false;
+ 					if (tileSafely.nactive()) {
+-						if (Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0))
++						if ((anchorBottom.type & AnchorType.SolidTile) == AnchorType.SolidTile && Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0)) // AnchorRight
+ 							flag7 = tileData2.isValidTileAnchor(tileSafely.type);
+ 
+ 						if (!flag7 && (anchorBottom.type & AnchorType.SolidSide) == AnchorType.SolidSide && Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type]) {
+@@ -492,7 +_,7 @@
+ 					Tile tileSafely = Framing.GetTileSafely(num8 + num31, num9 + num32);
+ 					bool flag8 = false;
+ 					if (tileSafely.nactive()) {
+-						if (Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0))
++						if ((anchorBottom.type & AnchorType.SolidTile) == AnchorType.SolidTile && Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type] && !Main.tileNoAttach[tileSafely.type] && (tileData2.FlattenAnchors || tileSafely.blockType() == 0)) // AnchorLeft
+ 							flag8 = tileData2.isValidTileAnchor(tileSafely.type);
+ 
+ 						if (!flag8 && (anchorBottom.type & AnchorType.SolidSide) == AnchorType.SolidSide && Main.tileSolid[tileSafely.type] && !Main.tileSolidTop[tileSafely.type]) {
+@@ -565,6 +_,9 @@
+ 			}
+ 
+ 			float num33 = num24 / num25;
++			// Backport a fix for tiles with no anchors: if (totalAnchorCount == 0) anchorPercent = 1;
++			if (num25 == 0)
++				num33 = 1;
+ 			float num34 = num22 / num23;
+ 			if (num34 == 1f && num25 == 0f) {
+ 				num23 = 1f;
+@@ -601,8 +_,13 @@
+ 				Point16 objectStart = TileObjectPreviewData.randomCache.ObjectStart;
+ 				int num36 = coordinates.X + objectStart.X;
+ 				int num37 = coordinates.Y + objectStart.Y;
++				int num38 = x - tileObjectData.Origin.X;
++				int num39 = y - tileObjectData.Origin.Y;
++				/* Fix random cache not working with alternates with different origins (mistakenly cycles new random each update), it should use the alternates TOD, not the tile styles TOD 
+ 				int num38 = x - tileData.Origin.X;
+ 				int num39 = y - tileData.Origin.Y;
++				*/
++
+ 				if (num36 != num38 || num37 != num39)
+ 					flag9 = true;
+ 			}

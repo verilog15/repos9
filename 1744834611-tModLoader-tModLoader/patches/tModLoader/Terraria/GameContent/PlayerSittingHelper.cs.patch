@@ -1,0 +1,42 @@
+--- src/TerrariaNetCore/Terraria/GameContent/PlayerSittingHelper.cs
++++ src/tModLoader/Terraria/GameContent/PlayerSittingHelper.cs
+@@ -1,5 +_,7 @@
+ using Microsoft.Xna.Framework;
++using Terraria.DataStructures;
+ using Terraria.ID;
++using Terraria.ModLoader;
+ 
+ namespace Terraria.GameContent;
+ 
+@@ -27,7 +_,8 @@
+ 
+ 	public bool TryGetSittingBlock(Player player, out Tile tile)
+ 	{
+-		tile = null;
++		tile = default;
++
+ 		if (!isSitting)
+ 			return false;
+ 
+@@ -263,7 +_,20 @@
+ 			}
+ 		}
+ 
++		// At this point, vanilla tile num/num2 represent the bottom-most tile coordinate of the tile (no vanilla tile for sitting is higher than 2),
++		// Modded ones are arbitrary, modder responsibility to find the bottom-post tile
++		TileRestingInfo info = new TileRestingInfo(player, new Point(num, num2), seatDownOffset, targetDirection, num3, zero, extraInfo);
++		TileLoader.ModifySittingTargetInfo(x, y, tileSafely.type, ref info);
++		num = info.AnchorTilePosition.X;
++		num2 = info.AnchorTilePosition.Y;
++		num3 = info.DirectionOffset;
++		targetDirection = info.TargetDirection;
++		seatDownOffset = info.VisualOffset;
++		zero = info.FinalOffset;
++		extraInfo = info.ExtraInfo;
++
++		//TML: 'num2 + 1' hardcode moved into ModifySittingTargetInfo
+-		playerSittingPosition = new Point(num, num2 + 1).ToWorldCoordinates(8f, 16f);
++		playerSittingPosition = new Point(num, num2).ToWorldCoordinates(8f, 16f);
+ 		playerSittingPosition.X += targetDirection * num3;
+ 		playerSittingPosition += zero;
+ 		return true;
